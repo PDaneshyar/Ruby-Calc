@@ -61,11 +61,24 @@ end
 
 # =========================== Main Program ================================
 
-puts "Would you like to do basic calculations(1) or advanced(2)?"
-choice = gets.chomp.to_i
+#  will loop the program until user wants to quit
+begin
+  puts "Would you like to do basic calculations(1) or advanced(2)?"
+  choice = gets.chomp.to_i
 
-if choice == 1
-  basic_calculations()
-elsif choice == 2
-  advanced_calculations()
-end
+  if choice == 1
+    basic_calculations()
+  elsif choice == 2
+    advanced_calculations()
+  end
+
+  puts "Would you like to do another calculation? Y/N"
+  choice = gets.chomp.upcase!
+
+  if choice == "Y"
+    quit = false
+  else
+    quit == true
+  end
+
+end while quit == false
