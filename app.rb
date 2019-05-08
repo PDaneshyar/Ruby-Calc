@@ -150,9 +150,9 @@ begin
   exit_choice = gets.chomp.upcase!
 
   if exit_choice == "Y"
-    quit = false
+    quit = true
   else
-    quit == true
+    quit = false
   end
 
-end while quit == false
+end while quit == true
