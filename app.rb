@@ -77,16 +77,16 @@ def basic_calculations
     result = 0;
 
     case operand
-    when 1
-      result  = input1 + input2
-    when 2
-      result = input1 - input2
-    when 3
-      result = input1 * input2
-    when 4
-      result = input1 / input2
-    when 5
-      result = input1 % input2
+      when 1
+        result  = input1 + input2
+      when 2
+        result = input1 - input2
+      when 3
+        result = input1 * input2
+      when 4
+        result = input1 / input2
+      when 5
+        result = input1 % input2
     end
 
   puts "The answer is: #{result}"
@@ -112,11 +112,33 @@ def advanced_calculations
   puts "The answer is: #{result}"
 end
 
+# calculates cost and time of a road trip
+def trip_calc
+  print "distance: "
+  distance = gets.to_f
+  print "mpg: "
+  mpg = gets.to_f
+  print "fuel price per gallon: "
+  cost = gets.to_f
+  print "speed: "
+  speed = gets.to_f
+
+  if speed > 60
+    mpg -= ((speed - 60) * 2)
+    if mpg < 5
+      mpg = 5
+    end
+  end
+
+  puts "It will take you #{distance/speed} hours at a cost of $#{(distance/mpg) * cost}"
+end
+
 # =========================== Main Program ================================
 
 #  will loop the program until user wants to quit
 begin
   puts "Would you like to do basic calculations(1) or advanced(2)? Or do you want to calculate BMI(3)?"
+  puts "Or do you want to calcuate a journey?(4)"
   choice = gets.chomp.to_i
 
   if choice == 1
@@ -132,15 +154,17 @@ begin
       bmi_choice = gets.chomp.to_i
 
       if bmi_choice == 1
-        result = bmi_metrics()
+        bmi_metrics()
         option = true
       elsif bmi_choice == 2
-        result = bmi_imperials()
+        bmi_imperials()
         option = true
       else
         puts "incorrect choice!"
       end
     end
+  elsif choice == 4
+    trip_calc()
   else
     puts "incorrect choice!!"
   end
